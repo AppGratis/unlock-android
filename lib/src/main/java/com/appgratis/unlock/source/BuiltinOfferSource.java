@@ -26,6 +26,7 @@
 package com.appgratis.unlock.source;
 
 import android.content.Context;
+import android.support.annotation.NonNull;
 import android.support.annotation.RawRes;
 
 import java.io.BufferedReader;
@@ -40,7 +41,7 @@ public class BuiltinOfferSource implements OfferSource {
 
     private String offersJSON = "{}";
 
-    public BuiltinOfferSource(Context context, @RawRes int rawResourceID) throws IOException {
+    public BuiltinOfferSource(@NonNull Context context, @RawRes int rawResourceID) throws IOException {
         InputStream rawFileInputStream = context.getResources().openRawResource(rawResourceID);
         try {
             BufferedReader reader = new BufferedReader(new InputStreamReader(rawFileInputStream));
