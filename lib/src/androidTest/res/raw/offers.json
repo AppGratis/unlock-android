@@ -1,0 +1,1 @@
+{"version":1,"offers":[{"name":"New Offer","token":"f4cc8d86-35c5-4df7-83e9-ba0be82ce43b","unlock_message":"Test","features":[{"lifetime":-1,"name":"NEW_FEATURE"}],"resources":[{"quantity":1,"name":"NEW_RESOURCE"}],"data":null,"conditions":{"start_date":1485903600,"end_date":null,"only_new_users":false}}]}

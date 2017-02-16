@@ -35,7 +35,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 
 /**
- * Offer source that reads
+ * Offer source that reads from a raw resource
  */
 public class BuiltinOfferSource implements OfferSource {
 
