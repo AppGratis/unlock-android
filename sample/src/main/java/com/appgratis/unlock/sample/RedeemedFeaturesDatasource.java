@@ -5,6 +5,7 @@ import android.support.annotation.NonNull;
 import com.appgratis.unlock.model.Feature;
 
 import java.util.List;
+import java.util.Locale;
 
 public class RedeemedFeaturesDatasource implements SectionedMetaAdapter.SectionDatasource {
     private List<Feature> redeemedFeatures;
@@ -15,7 +16,7 @@ public class RedeemedFeaturesDatasource implements SectionedMetaAdapter.SectionD
 
     @Override
     public int getItemCount() {
-        return 0;
+        return redeemedFeatures.size();
     }
 
     @Override
@@ -25,6 +26,8 @@ public class RedeemedFeaturesDatasource implements SectionedMetaAdapter.SectionD
 
     @Override
     public void onBindViewHolder(SectionedMetaAdapter.ItemViewHolder holder, int row) {
-
+        Feature feature = redeemedFeatures.get(row);
+        holder.titleTextView.setText(feature.name.toUpperCase(Locale.US));
+        holder.detailsTextView.setText(null);
     }
 }

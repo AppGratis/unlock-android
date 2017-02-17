@@ -16,6 +16,7 @@ public class SectionedMetaAdapter extends SectionedRecyclerViewAdapter {
 
     public SectionedMetaAdapter(SectionsDataProvider sectionsDataProvider) {
         this.sectionsDataProvider = new WeakReference<>(sectionsDataProvider);
+        this.shouldShowHeadersForEmptySections(true);
     }
 
     @Override

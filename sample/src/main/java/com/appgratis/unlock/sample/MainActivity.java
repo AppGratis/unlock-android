@@ -25,29 +25,42 @@
 
 package com.appgratis.unlock.sample;
 
+import android.content.DialogInterface;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.DividerItemDecoration;
+import android.util.Log;
 
+import com.appgratis.unlock.UnlockManager;
+import com.appgratis.unlock.internal.DatasourceParsingException;
 import com.appgratis.unlock.model.Feature;
 import com.appgratis.unlock.model.Offer;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements SectionedMetaAdapter.SectionsDataProvider {
 
-    RecyclerView recyclerView;
-    SectionedMetaAdapter recyclerViewAdapter;
-    SectionedMetaAdapter.SectionDatasource[] sectionDatasources = new SectionedMetaAdapter.SectionDatasource[3];
+    private RecyclerView recyclerView;
+    private SectionedMetaAdapter recyclerViewAdapter;
+    private SectionedMetaAdapter.SectionDatasource[] sectionDatasources = new SectionedMetaAdapter.SectionDatasource[3];
+
+    private SampleUnlockManager unlockManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        refreshDataProviders();
+        try {
+            unlockManager = new SampleUnlockManager(this);
+        } catch (IOException | DatasourceParsingException e) {
+            Log.e(MainActivity.class.getSimpleName(), "Error while loading the unlock manager", e);
+            showUnlockManagerError();
+        }
 
         recyclerViewAdapter = new SectionedMetaAdapter(this);
         recyclerView = (RecyclerView)findViewById(R.id.recyclerView);
@@ -59,14 +72,33 @@ public class MainActivity extends AppCompatActivity implements SectionedMetaAdap
         recyclerView.setAdapter(recyclerViewAdapter);
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        refreshDataProviders();
+    }
+
     public void refreshDataProviders() {
-        sectionDatasources[0] = new AvailableOffersDatasource(new ArrayList<Offer>());
-        sectionDatasources[1] = new RedeemedFeaturesDatasource(new ArrayList<Feature>());
-        sectionDatasources[2] = new ResourcesDatasource();
+        sectionDatasources[0] = new AvailableOffersDatasource(unlockManager.getPendingOffers());
+        sectionDatasources[1] = new RedeemedFeaturesDatasource(unlockManager.getFeatures());
+        sectionDatasources[2] = new ResourcesDatasource(this);
 
         if (recyclerViewAdapter != null) {
             recyclerViewAdapter.notifyDataSetChanged();
         }
+    }
+
+    public void showUnlockManagerError() {
+        new AlertDialog.Builder(this)
+                .setTitle("Error")
+                .setMessage("Something happened while loading the offer list. The app cannot continue.")
+                .setOnDismissListener(new DialogInterface.OnDismissListener() {
+                    @Override
+                    public void onDismiss(DialogInterface dialog) {
+                        MainActivity.this.finish();
+                    }
+                })
+                .show();
     }
 
     @Override
@@ -88,6 +120,5 @@ public class MainActivity extends AppCompatActivity implements SectionedMetaAdap
     public void onBindViewHolder(SectionedMetaAdapter.ItemViewHolder holder, int section, int row) {
         sectionDatasources[section].onBindViewHolder(holder, row);
     }
-
 
 }
