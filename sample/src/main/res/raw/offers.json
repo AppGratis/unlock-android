@@ -1,0 +1,82 @@
+{
+    "version": 1,
+    "offers": [
+        {
+            "name": "Welcome Offer",
+            "token": "3ca47747-b023-4e78-b1d3-4e9ea25f9bd5",
+            "unlock_message": "Congratulations $nickname!",
+            "features": [
+                {
+                    "lifetime": 3600,
+                    "name": "NO_ADS"
+                }
+            ],
+            "resources": [
+                {
+                    "quantity": 1,
+                    "name": "GOLD"
+                }
+            ],
+            "data": {
+                "nickname": "foo"
+            },
+            "conditions": {
+                "start_date": 1485903600,
+                "end_date": null,
+                "only_new_users": true
+            }
+        },
+        {
+            "name": "Lunch Happy Hour",
+            "token": "71c64807-f211-4c7b-a849-712eaf64ca64",
+            "unlock_message": null,
+            "features": [
+                {
+                    "lifetime": 60,
+                    "name": "BETTER_MUSIC"
+                }
+            ],
+            "resources": [
+                {
+                    "quantity": 100,
+                    "name": "FOOD"
+                }
+            ],
+            "data": null,
+            "conditions": {
+                "repeat": {
+                    "every": "DAY",
+                    "start_hour": 12,
+                    "end_hour": 14
+                },
+                "start_date": 1485950456,
+                "end_date": null,
+                "only_new_users": false
+            }
+        },
+        {
+            "name": "Sunday special",
+            "token": "e47e115d-e874-4ce2-8969-158fe1cbf386",
+            "unlock_message": null,
+            "features": [
+                {
+                    "lifetime": -1,
+                    "name": "NO_ADS"
+                }
+            ],
+            "resources": [],
+            "data": null,
+            "conditions": {
+                "repeat": {
+                    "every": "WEEK",
+                    "weekday": "SUNDAY",
+                    "start_hour": 0,
+                    "end_hour": 24
+                },
+                "start_date": 1485957040,
+                "end_date": null,
+                "only_new_users": false
+            }
+        }
+    ]
+}

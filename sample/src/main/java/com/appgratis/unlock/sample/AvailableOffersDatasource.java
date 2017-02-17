@@ -26,6 +26,8 @@ public class AvailableOffersDatasource implements SectionedMetaAdapter.SectionDa
 
     @Override
     public void onBindViewHolder(SectionedMetaAdapter.ItemViewHolder holder, int row) {
-
+        Offer offer = availableOffers.get(row);
+        holder.titleTextView.setText(offer.token);
+        holder.detailsTextView.setText(null);
     }
 }
