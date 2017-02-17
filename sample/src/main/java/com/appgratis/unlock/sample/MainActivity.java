@@ -31,17 +31,25 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.DividerItemDecoration;
 
-public class MainActivity extends AppCompatActivity implements MainAdapter.SectionDataProvider {
+import com.appgratis.unlock.model.Feature;
+import com.appgratis.unlock.model.Offer;
+
+import java.util.ArrayList;
+
+public class MainActivity extends AppCompatActivity implements SectionedMetaAdapter.SectionsDataProvider {
 
     RecyclerView recyclerView;
-    MainAdapter recyclerViewAdapter;
+    SectionedMetaAdapter recyclerViewAdapter;
+    SectionedMetaAdapter.SectionDatasource[] sectionDatasources = new SectionedMetaAdapter.SectionDatasource[3];
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        recyclerViewAdapter = new MainAdapter(this);
+        refreshDataProviders();
+
+        recyclerViewAdapter = new SectionedMetaAdapter(this);
         recyclerView = (RecyclerView)findViewById(R.id.recyclerView);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -51,48 +59,35 @@ public class MainActivity extends AppCompatActivity implements MainAdapter.Secti
         recyclerView.setAdapter(recyclerViewAdapter);
     }
 
+    public void refreshDataProviders() {
+        sectionDatasources[0] = new AvailableOffersDatasource(new ArrayList<Offer>());
+        sectionDatasources[1] = new RedeemedFeaturesDatasource(new ArrayList<Feature>());
+        sectionDatasources[2] = new ResourcesDatasource();
+
+        if (recyclerViewAdapter != null) {
+            recyclerViewAdapter.notifyDataSetChanged();
+        }
+    }
+
     @Override
     public int getSectionCount() {
-        return 3;
+        return sectionDatasources.length;
     }
 
     @Override
     public int getItemCount(int section) {
-        switch (section) {
-            case 0:
-                return 3;
-            case 1:
-                return 3;
-            case 2:
-                return 3;
-        }
-        return 0;
+        return sectionDatasources[section].getItemCount();
     }
 
     @Override
     public String getHeaderText(int section) {
-        switch (section) {
-            case 0:
-                return "Available Offers";
-            case 1:
-                return "Redeemed Features";
-            case 2:
-                return "Resources";
-        }
-        return "";
+        return sectionDatasources[section].getHeaderText();
     }
 
     @Override
-    public void onBindViewHolder(MainAdapter.ItemViewHolder holder, int section, int row) {
-        holder.titleTextView.setText("Foo");
-        holder.detailsTextView.setText("Bar");
-        switch (section) {
-            case 0:
-                return;
-            case 1:
-                return;
-            case 2:
-                return;
-        }
+    public void onBindViewHolder(SectionedMetaAdapter.ItemViewHolder holder, int section, int row) {
+        sectionDatasources[section].onBindViewHolder(holder, row);
     }
+
+
 }

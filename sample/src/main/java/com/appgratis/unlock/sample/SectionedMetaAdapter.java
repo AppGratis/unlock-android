@@ -10,32 +10,32 @@ import com.afollestad.sectionedrecyclerview.SectionedRecyclerViewAdapter;
 
 import java.lang.ref.WeakReference;
 
-public class MainAdapter extends SectionedRecyclerViewAdapter {
+public class SectionedMetaAdapter extends SectionedRecyclerViewAdapter {
 
-    private WeakReference<SectionDataProvider> sectionDataProvider;
+    private WeakReference<SectionsDataProvider> sectionsDataProvider;
 
-    public MainAdapter(SectionDataProvider sectionDataProvider) {
-        this.sectionDataProvider = new WeakReference<>(sectionDataProvider);
+    public SectionedMetaAdapter(SectionsDataProvider sectionsDataProvider) {
+        this.sectionsDataProvider = new WeakReference<>(sectionsDataProvider);
     }
 
     @Override
     public int getSectionCount() {
-        return getSectionDataProvider().getSectionCount();
+        return getSectionsDataProvider().getSectionCount();
     }
 
     @Override
     public int getItemCount(int section) {
-        return getSectionDataProvider().getItemCount(0);
+        return getSectionsDataProvider().getItemCount(section);
     }
 
     @Override
     public void onBindHeaderViewHolder(RecyclerView.ViewHolder holder, int section) {
-        ((HeaderViewHolder)holder).textView.setText(getSectionDataProvider().getHeaderText(section));
+        ((HeaderViewHolder)holder).textView.setText(getSectionsDataProvider().getHeaderText(section));
     }
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int section, int relativePosition, int absolutePosition) {
-        getSectionDataProvider().onBindViewHolder((ItemViewHolder)holder, section, relativePosition);
+        getSectionsDataProvider().onBindViewHolder((ItemViewHolder)holder, section, relativePosition);
     }
 
     @Override
@@ -56,21 +56,23 @@ public class MainAdapter extends SectionedRecyclerViewAdapter {
 
     public static class ItemViewHolder extends RecyclerView.ViewHolder {
 
+        public View rootView;
         public TextView titleTextView;
         public TextView detailsTextView;
 
         public ItemViewHolder(View itemView) {
             super(itemView);
+            rootView = itemView;
             titleTextView = (TextView)itemView.findViewById(R.id.titleTextView);
             detailsTextView = (TextView)itemView.findViewById(R.id.detailsTextView);
         }
     }
 
-    private SectionDataProvider getSectionDataProvider() {
-        return sectionDataProvider.get();
+    private SectionsDataProvider getSectionsDataProvider() {
+        return sectionsDataProvider.get();
     }
 
-    interface SectionDataProvider {
+    interface SectionsDataProvider {
         int getSectionCount();
 
         int getItemCount(int section);
@@ -78,5 +80,14 @@ public class MainAdapter extends SectionedRecyclerViewAdapter {
         String getHeaderText(int section);
 
         void onBindViewHolder(ItemViewHolder holder, int section, int row);
+    }
+
+    public interface SectionDatasource {
+
+        int getItemCount();
+
+        String getHeaderText();
+
+        void onBindViewHolder(SectionedMetaAdapter.ItemViewHolder holder, int row);
     }
 }
