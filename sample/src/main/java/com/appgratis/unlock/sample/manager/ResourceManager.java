@@ -1,4 +1,4 @@
-package com.appgratis.unlock.sample;
+package com.appgratis.unlock.sample.manager;
 
 import android.content.Context;
 import android.content.SharedPreferences;

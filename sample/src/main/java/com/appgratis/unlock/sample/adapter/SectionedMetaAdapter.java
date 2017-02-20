@@ -1,4 +1,4 @@
-package com.appgratis.unlock.sample;
+package com.appgratis.unlock.sample.adapter;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.afollestad.sectionedrecyclerview.SectionedRecyclerViewAdapter;
+import com.appgratis.unlock.sample.R;
 
 import java.lang.ref.WeakReference;
 
@@ -73,7 +74,7 @@ public class SectionedMetaAdapter extends SectionedRecyclerViewAdapter {
         return sectionsDataProvider.get();
     }
 
-    interface SectionsDataProvider {
+    public interface SectionsDataProvider {
         int getSectionCount();
 
         int getItemCount(int section);

@@ -1,4 +1,4 @@
-package com.appgratis.unlock.sample;
+package com.appgratis.unlock.sample.adapter;
 
 import android.support.annotation.NonNull;
 

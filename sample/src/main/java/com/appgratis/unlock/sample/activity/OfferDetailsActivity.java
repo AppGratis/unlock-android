@@ -1,13 +1,9 @@
-package com.appgratis.unlock.sample;
+package com.appgratis.unlock.sample.activity;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
@@ -15,8 +11,8 @@ import android.widget.TextView;
 
 import com.appgratis.unlock.internal.DatasourceParsingException;
 import com.appgratis.unlock.model.Offer;
-
-import org.w3c.dom.Text;
+import com.appgratis.unlock.sample.R;
+import com.appgratis.unlock.sample.manager.SampleUnlockManager;
 
 import java.io.IOException;
 
