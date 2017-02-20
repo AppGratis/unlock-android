@@ -10,7 +10,7 @@ android {
         minSdkVersion 15
         targetSdkVersion 25
         versionCode 1
-        versionName "0.1.1"
+        versionName "0.2.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -36,7 +36,7 @@ dependencies {
 archivesBaseName = "appgratis-unlock"
 
 group = "com.appgratis"
-version = "0.1.1"
+version = "0.2.0"
 
 install {
     repositories.mavenInstaller {
@@ -44,7 +44,7 @@ install {
             group "com.appgratis"
             artifactId "appgratis-unlock"
             packaging 'aar'
-            version "0.1.1"
+            version "0.2.0"
         }
     }
 }
@@ -62,9 +62,9 @@ bintray {
         licenses = ['MIT']
         vcsUrl = 'https://github.com/AppGratis/unlock-android.git'
         version {
-            name = '0.1.1'
+            name = '0.2.0'
             desc = 'AppGratis Unlock Library'
-            vcsTag = '0.1'
+            vcsTag = '0.2.0'
         }
     }
 }
