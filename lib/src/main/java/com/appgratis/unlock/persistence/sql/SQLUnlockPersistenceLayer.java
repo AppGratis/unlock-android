@@ -79,7 +79,7 @@ public class SQLUnlockPersistenceLayer extends SQLiteOpenHelper implements Unloc
     @Override
     public synchronized void saveRepeatingOffer(@NonNull String offerToken, @NonNull Date unlockDate) {
         final SQLiteDatabase db = getWritableDatabase();
-        db.insert(OfferConsuptionTable.TABLE_NAME, null, OfferConsuptionTable.convertToContentValues(offerToken, unlockDate));
+        db.insert(OfferConsuptionTable.TABLE_NAME, null, OfferConsuptionTable.convertToContentValues(offerToken, getDateWithoutTimeComponents(unlockDate)));
         db.close();
     }
 
