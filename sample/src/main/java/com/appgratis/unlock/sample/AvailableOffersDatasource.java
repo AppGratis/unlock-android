@@ -1,6 +1,9 @@
 package com.appgratis.unlock.sample;
 
+import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.view.View;
 
 import com.appgratis.unlock.model.Offer;
 
@@ -27,7 +30,17 @@ public class AvailableOffersDatasource implements SectionedMetaAdapter.SectionDa
     @Override
     public void onBindViewHolder(SectionedMetaAdapter.ItemViewHolder holder, int row) {
         Offer offer = availableOffers.get(row);
-        holder.titleTextView.setText(offer.token);
+        final String offerToken = offer.token;
+        holder.titleTextView.setText(offerToken);
         holder.detailsTextView.setText(null);
+        holder.rootView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final Context c = v.getContext();
+                final Intent i = new Intent(c, OfferDetailsActivity.class);
+                i.putExtra(OfferDetailsActivity.EXTRA_OFFER_TOKEN, offerToken);
+                c.startActivity(i);
+            }
+        });
     }
 }

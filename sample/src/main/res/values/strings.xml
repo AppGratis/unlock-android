@@ -25,4 +25,5 @@
 
 <resources>
     <string name="app_name">AppGratis Unlock Sample</string>
+    <string name="title_activity_offer_details">Offer Details</string>
 </resources>
