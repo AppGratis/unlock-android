@@ -1,4 +1,4 @@
-package com.appgratis.unlock.sample;
+package com.appgratis.unlock.sample.manager;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -11,6 +11,7 @@ import com.appgratis.unlock.internal.DatasourceParsingException;
 import com.appgratis.unlock.model.Feature;
 import com.appgratis.unlock.model.Offer;
 import com.appgratis.unlock.model.Resource;
+import com.appgratis.unlock.sample.R;
 import com.appgratis.unlock.source.BuiltinOfferSource;
 
 import org.json.JSONException;

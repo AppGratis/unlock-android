@@ -23,7 +23,7 @@
  *
  */
 
-package com.appgratis.unlock.sample;
+package com.appgratis.unlock.sample.activity;
 
 import android.content.DialogInterface;
 import android.support.v7.app.AlertDialog;
@@ -35,6 +35,12 @@ import android.support.v7.widget.DividerItemDecoration;
 import android.util.Log;
 
 import com.appgratis.unlock.internal.DatasourceParsingException;
+import com.appgratis.unlock.sample.adapter.AvailableOffersDatasource;
+import com.appgratis.unlock.sample.R;
+import com.appgratis.unlock.sample.adapter.RedeemedFeaturesDatasource;
+import com.appgratis.unlock.sample.adapter.ResourcesDatasource;
+import com.appgratis.unlock.sample.manager.SampleUnlockManager;
+import com.appgratis.unlock.sample.adapter.SectionedMetaAdapter;
 
 import java.io.IOException;
 

@@ -28,7 +28,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.appgratis.unlock.sample.OfferDetailsActivity">
+    tools:context="com.appgratis.unlock.sample.activity.OfferDetailsActivity">
 
     <ScrollView
         android:layout_width="match_parent"

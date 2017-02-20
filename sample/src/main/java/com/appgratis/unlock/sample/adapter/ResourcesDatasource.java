@@ -1,8 +1,10 @@
-package com.appgratis.unlock.sample;
+package com.appgratis.unlock.sample.adapter;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.support.annotation.NonNull;
+
+import com.appgratis.unlock.sample.manager.ResourceManager;
 
 public class ResourcesDatasource implements SectionedMetaAdapter.SectionDatasource {
 
