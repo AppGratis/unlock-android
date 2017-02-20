@@ -91,7 +91,7 @@ public class OfferDetailsActivity extends AppCompatActivity {
     public void showOfferLoadError() {
         new AlertDialog.Builder(this)
                 .setTitle("Error")
-                .setMessage("Something happened while loading the offer. The app cannot continue.")
+                .setMessage("Something happened while loading the offer. More info has been printed in the logcat.")
                 .setOnDismissListener(new DialogInterface.OnDismissListener() {
                     @Override
                     public void onDismiss(DialogInterface dialog) {
