@@ -34,13 +34,9 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.DividerItemDecoration;
 import android.util.Log;
 
-import com.appgratis.unlock.UnlockManager;
 import com.appgratis.unlock.internal.DatasourceParsingException;
-import com.appgratis.unlock.model.Feature;
-import com.appgratis.unlock.model.Offer;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements SectionedMetaAdapter.SectionsDataProvider {
 
