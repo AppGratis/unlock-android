@@ -46,6 +46,13 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.appgratis.unlock.sample.activity.MainActivity" />
         </activity>
+        <activity android:name=".activity.FeatureDetailsActivity"
+            android:label="@string/title_activity_feature_details"
+            android:parentActivityName=".activity.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.appgratis.unlock.sample.activity.MainActivity" />
+        </activity>
     </application>
 
 </manifest>
