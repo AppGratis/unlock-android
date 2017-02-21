@@ -10,7 +10,7 @@ Using Gradle:
 Make sure jCenter is in your enabled maven repositories (projects created by Android Studio have it by default)
 
 Then, add to your build.gradle:  
-`compile 'com.appgratis:appgratis-unlock:0.1.1'`
+`compile 'com.appgratis:appgratis-unlock:0.2.0'`
 
 Using Eclipse:
 You should really use gradle :)
@@ -20,5 +20,4 @@ Simply open this repository in Android Studio
 
 ## Missing features
  - Documentation
-   - Sample App
    - How to use
