@@ -60,7 +60,5 @@ public class SampleUnlockManager {
         }
 
         manager.consumeOffer(offer);
-
-        //TODO: Broadcast something to tell the UI to refresh
     }
 }
