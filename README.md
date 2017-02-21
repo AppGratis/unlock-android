@@ -18,6 +18,7 @@ You should really use gradle :)
 ## Building
 Simply open this repository in Android Studio
 
-## Missing features
- - Documentation
-   - How to use
+## Sample App
+This library comes with a full sample app project. Simply open it in Android Studio to see how the library should be used.
+
+![Sample Screenshot](https://github.com/AppGratis/unlock-android/blob/master/sample.png?raw=true)
